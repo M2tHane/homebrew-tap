@@ -4,7 +4,7 @@ cask "distill" do
 
   url "https://github.com/M2tHane/Distill/releases/download/v#{version}/Distill-#{version}.zip"
   name "Distill"
-  desc "Distill coding agent sessions into skills, rules and AGENTS.md"
+  desc "Turn coding agent sessions into skills, rules and AGENTS.md"
   homepage "https://github.com/M2tHane/Distill"
 
   livecheck do
@@ -12,15 +12,14 @@ cask "distill" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :monterey"
+  depends_on macos: :monterey
 
   app "Distill.app"
 
-  # The app is signed ad hoc, not by a Developer ID, so Gatekeeper would
-  # refuse to open it while it is quarantined.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Distill.app"]
+  # Distill is signed ad hoc, not with a Developer ID, so Gatekeeper refuses
+  # to open it while it is quarantined.
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Distill.app"]
   end
 
   zap trash: "~/.distill"
