@@ -1,6 +1,6 @@
 cask "distill" do
-  version "0.1.0"
-  sha256 "fdf7e9d8ef2450703bfad517cd90fb8074b9ec304065f48317e435edbaf88838"
+  version "0.2.0"
+  sha256 "b26e23bced5449c4fd23966859af66a2c6b7b98d79e1d44adf701302db14ed09"
 
   url "https://github.com/M2tHane/Distill/releases/download/v#{version}/Distill-#{version}.zip"
   name "Distill"
